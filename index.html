@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#091522">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Ações Med Center | Arquivo 2026</title>
+  <meta name="description" content="Portal de acesso às pastas das ações Med Center, organizadas por mês, município e período.">
+  <style>
+    :root { color-scheme: dark; --bg:#081421;--panel:#101f30;--panel2:#152639;--line:#26394a;--text:#f3f8fd;--muted:#9ab0c0;--brand:#59e0cc;--brandDark:#092e31; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {margin:0;background:radial-gradient(circle at 90% 0%,#123949 0%,transparent 30%),var(--bg);font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);min-height:100vh;}
+    a { color:inherit; }
+    .shell { max-width:1180px; margin:auto; padding:0 24px; }
+    .topbar { border-bottom:1px solid #203447; background:#081421e8; }
+    .topbar .shell { display:flex;justify-content:space-between;align-items:center;min-height:79px;gap:20px; }
+    .brand { display:flex;align-items:center;gap:13px;font-weight:800;letter-spacing:.075em;font-size:.95rem; }
+    .mark {width:43px;height:43px;border:1px solid #69e0cf78;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#1e6a66,#0f343c);color:#cafff5;font-size:1.38rem;font-weight:900;letter-spacing:-.06em; }
+    .year {border:1px solid #385366;border-radius:999px;padding:7px 14px;color:#c3d7e2;font-size:.77rem;letter-spacing:.14em;font-weight:750; }
+    .hero { padding:64px 0 36px; }
+    .eyebrow {display:inline-flex;align-items:center;gap:9px;color:var(--brand);font-weight:800;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;}
+    .pulse {width:8px;height:8px;background:var(--brand);border-radius:100%;box-shadow:0 0 0 5px #4de2c51d;}
+    h1 {font-size:clamp(2.4rem,6.5vw,5.2rem);line-height:1.04;max-width:820px;letter-spacing:-.055em;margin:18px 0 23px;font-weight:820;}
+    h1 span {color:var(--brand);}
+    .intro { color:var(--muted);font-size:1.05rem;max-width:610px;margin:0; }
+    .stats {display:flex;flex-wrap:wrap;gap:12px;margin-top:38px;}
+    .stat { background:#122435b8;border:1px solid #2a4757;border-radius:16px;min-width:158px;padding:18px 24px; }
+    .stat strong { display:block;font-size:1.75rem;line-height:1.2;letter-spacing:-.04em; }
+    .stat small {display:block;color:var(--muted);font-size:.76rem;margin-top:5px;}
+    .content {padding-bottom:75px;}
+    .toolbar {position:relative;display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:22px 0 12px;}
+    .search {position:relative;flex:1 1 260px;}
+    .search svg {position:absolute;top:50%;left:17px;transform:translateY(-50%);color:#91abb9;pointer-events:none;}
+    .search input {width:100%;height:52px;border:1px solid var(--line);border-radius:13px;color:var(--text);background:#122435;padding:0 18px 0 48px;font:inherit;outline:none;transition:border-color .15s,box-shadow .15s;}
+    .search input:focus {border-color:var(--brand);box-shadow:0 0 0 3px #59e0cc24;}
+    .search input::placeholder {color:#9cb1bf;}
+    .select {background:#122435;color:#e7f2f8;border:1px solid var(--line);border-radius:13px;height:52px;padding:0 14px;font:inherit;cursor:pointer;min-width:140px;}
+    .months {display:flex;overflow-x:auto;gap:9px;padding:12px 0 24px;scrollbar-width:thin;}
+    .filter {appearance:none;white-space:nowrap;background:#122435;color:#b9cbd7;border:1px solid #304357;border-radius:999px;padding:10px 15px;font-size:.86rem;font-weight:650;cursor:pointer;transition:.15s;}
+    .filter:hover {border-color:#64cfc1;color:white;}
+    .filter[aria-pressed="true"] {color:#082b2b;background:var(--brand);border-color:var(--brand);}
+    .filter .count {opacity:.68;margin-left:6px;font-size:.78rem;}
+    .results {display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;gap:14px;}
+    .results-text {color:var(--muted);font-size:.86rem;}
+    .reset {background:none;border:0;color:var(--brand);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font:inherit;font-size:.84rem;}
+    .month-block {margin:0 0 37px;scroll-margin-top:24px;}
+    .month-heading {display:flex;align-items:center;gap:14px;margin-bottom:15px;}
+    .month-heading h2 {font-size:1.5rem;letter-spacing:-.035em;margin:0;}
+    .month-heading .number {color:#83a3b6;background:#152839;padding:3px 9px;border:1px solid #294254;border-radius:7px;font-size:.76rem;font-weight:750;}
+    .rule {height:1px;background:var(--line);flex:1;}
+    .cards {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+    .card {border:1px solid #294052;background:linear-gradient(135deg,#132538,#0e1c2c);border-radius:17px;padding:22px;display:flex;flex-direction:column;min-height:217px;transition:transform .15s,border-color .15s,background .15s;}
+    .card:hover {transform:translateY(-2px);border-color:#53a99f;background:linear-gradient(135deg,#193245,#10212f);}
+    .meta {display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:18px;}
+    .chip {display:inline-flex;align-items:center;border-radius:6px;font-size:.69rem;line-height:1.25;font-weight:800;letter-spacing:.045em;padding:5px 8px;background:#203c4b;color:#b5eae5;border:1px solid #325c64;}
+    .chip.duplicate {background:#3b3025;border-color:#6d5940;color:#f5d5a5;letter-spacing:0;}
+    .card h3 {font-size:1.24rem;letter-spacing:-.025em;margin:0 0 6px;line-height:1.25;}
+    .date {color:var(--muted);font-size:.86rem;margin:0 0 21px;}
+    .visit {margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--brand);font-weight:760;text-decoration:none;font-size:.86rem;}
+    .visit svg {transition:transform .15s;}
+    .card:hover .visit svg {transform:translate(2px,-2px);}
+    .empty {padding:40px 20px;text-align:center;border:1px dashed #385163;background:#112232;border-radius:16px;color:var(--muted);}
+    .empty strong {display:block;color:var(--text);font-size:1.2rem;margin-bottom:5px;}
+    footer {border-top:1px solid var(--line);color:#91a9b8;font-size:.81rem;padding:27px 0 36px;}
+    footer .shell {display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;}
+    button:focus-visible,a:focus-visible,select:focus-visible {outline:3px solid var(--brand);outline-offset:3px;}
+    @media(max-width:950px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media(max-width:640px){.shell{padding:0 18px}.topbar .shell{min-height:68px}.brand{font-size:.81rem}.mark{width:37px;height:37px;border-radius:11px}.hero{padding:46px 0 25px}.intro{font-size:.97rem}.stat{flex:1;min-width:95px;padding:15px}.stat strong{font-size:1.5rem}.stats{gap:8px;margin-top:27px}.cards{grid-template-columns:1fr}.card{min-height:190px}.year{padding:5px 10px}.month-heading h2{font-size:1.35rem}.toolbar{padding-top:12px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="shell">
+    <div class="brand"><span class="mark" aria-hidden="true">M</span><span>AÇÕES MED CENTER</span></div>
+    <div class="year">ARQUIVO 2026</div>
+  </div></header>
+  <main class="shell">
+    <section class="hero" aria-labelledby="titulo">
+      <div class="eyebrow"><span class="pulse" aria-hidden="true"></span>Central de arquivos</div>
+      <h1 id="titulo">Todas as ações.<br><span>Em um só lugar.</span></h1>
+      <p class="intro">Encontre rapidamente as pastas das ações médicas no Google Drive. Navegue por mês, busque o município e abra os documentos com um clique.</p>
+      <div class="stats" aria-label="Resumo do arquivo">
+        <div class="stat"><strong id="total-pastas">31</strong><small>Pastas no Drive</small></div>
+        <div class="stat"><strong>27</strong><small>Ações distintas</small></div>
+        <div class="stat"><strong>08</strong><small>Meses catalogados</small></div>
+      </div>
+    </section>
+    <section class="content" aria-label="Lista de ações">
+      <div class="toolbar">
+        <label class="search">
+          <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
+          <input id="search" type="search" placeholder="Buscar por cidade, mês ou período..." autocomplete="off" aria-label="Buscar ações">
+        </label>
+        <select id="state" class="select" aria-label="Filtrar por estado">
+          <option value="all">Todos os estados</option>
+          <option value="GO">Goiás (GO)</option>
+          <option value="TO">Tocantins (TO)</option>
+          <option value="MS">Mato Grosso do Sul (MS)</option>
+        </select>
+      </div>
+      <nav class="months" id="months" aria-label="Filtrar por mês"></nav>
+      <div class="results">
+        <span class="results-text" id="results" role="status" aria-live="polite"></span>
+        <button class="reset" id="clear" type="button" hidden>Limpar filtros</button>
+      </div>
+      <div id="list"></div>
+      <div class="empty" id="empty" hidden><strong>Nenhuma ação encontrada</strong>Tente outra cidade, mês ou estado.</div>
+    </section>
+  </main>
+  <footer><div class="shell"><span>Med Center · Arquivo de ações 2026</span><span>Links para pastas do Google Drive · Atualizado em 05/11/2026</span></div></footer>
+  <script>
+    "use strict";
+    const actions = [{"month":"Outubro","city":"Guarinos","state":"GO","period":"29 e 30 de outubro","tag":"","url":"https://drive.google.com/drive/folders/1Ivh9szAkLU1NHgCUSYD9QbwDv09nDOip"},{"month":"Outubro","city":"Mambaí","state":"GO","period":"09 de outubro","tag":"","url":"https://drive.google.com/drive/folders/1rPNicPUxCKb9OSd-32kHfnksHsUPrm_u"},{"month":"Setembro","city":"Alexânia","state":"GO","period":"24 e 25 de setembro","tag":"","url":"https://drive.google.com/drive/folders/1EB_31ZFmwD3M9IT2hQhmLod6RfwVVxIO"},{"month":"Setembro","city":"Bonito","state":"MS","period":"08 a 10 de setembro","tag":"","url":"https://drive.google.com/drive/folders/1-B3YVMPkuQ7b9ERwLSdnOwtlyR6cXHL0"},{"month":"Agosto","city":"Luziânia","state":"GO","period":"20 a 22 de agosto","tag":"","url":"https://drive.google.com/drive/folders/1aIUyJely8OkLunUMP7cAGNSRwZjWcqWI"},{"month":"Agosto","city":"Luziânia","state":"GO","period":"06 a 08 de agosto","tag":"","url":"https://drive.google.com/drive/folders/1cqd-l4kCzG8PT4J0OtX57A9uxBvb5by8"},{"month":"Julho","city":"Arraias","state":"TO","period":"28 a 30 de julho","tag":"","url":"https://drive.google.com/drive/folders/1iZzJtDKSeappKloLWbwuh9Ysj_z8x_hZ"},{"month":"Julho","city":"Valparaíso","state":"GO","period":"27 a 31 de julho","tag":"","url":"https://drive.google.com/drive/folders/1MFNzURtHefKkSfhQ8LfI-hnaTLdtg6s_"},{"month":"Julho","city":"Valparaíso","state":"GO","period":"27 a 31 de julho","tag":"Cópia","url":"https://drive.google.com/drive/folders/1GafeRkcV_CuiWbMEDxfOrxuIN3yj0lyA"},{"month":"Julho","city":"Luziânia","state":"GO","period":"21 a 25 de julho","tag":"","url":"https://drive.google.com/drive/folders/1LreIQdjWEXv4atztNtNsLQQFcxkVZfh-"},{"month":"Julho","city":"Jardim","state":"MS","period":"13 a 15 de julho","tag":"","url":"https://drive.google.com/drive/folders/1H2K3YBhTAoNIyHwrhLhELhels3vTisIU"},{"month":"Julho","city":"Jardim","state":"MS","period":"13 a 15 de julho","tag":"Produção excedente","url":"https://drive.google.com/drive/folders/16wH8U3DoEhEgbJbW5EH71dX3e2fucwyl"},{"month":"Julho","city":"Jardim","state":"MS","period":"13 a 15 de julho","tag":"Cópia","url":"https://drive.google.com/drive/folders/1oR49JfxOZyD82LyvNs-uxLft_eCNDGSr"},{"month":"Julho","city":"Três Lagoas","state":"MS","period":"06 a 10 de julho","tag":"","url":"https://drive.google.com/drive/folders/1OEjykbPY4-f0YaZE7eL2AU9SK_Ozv3rw"},{"month":"Junho","city":"Pium","state":"TO","period":"29 e 30 de junho","tag":"","url":"https://drive.google.com/drive/folders/1IO0CTc4sUlfvTP3FwtXq6wPmV8o4Npkb"},{"month":"Junho","city":"Alexânia","state":"GO","period":"25 a 27 de junho","tag":"","url":"https://drive.google.com/drive/folders/16U1CcJ1qbQwdCGVXjAN4Q93lhH5P48F_"},{"month":"Junho","city":"Luziânia","state":"GO","period":"25 a 27 de junho","tag":"","url":"https://drive.google.com/drive/folders/1Hl8MOx7U9WmbHg54MyApnL0rF2pMan9x"},{"month":"Junho","city":"Marianópolis","state":"TO","period":"18 e 19 de junho","tag":"","url":"https://drive.google.com/drive/folders/1wuzzAqNuVAD6Amk6sGvEHQVqXJnpyN6V"},{"month":"Junho","city":"Dois Irmãos","state":"TO","period":"11 de junho","tag":"","url":"https://drive.google.com/drive/folders/1qmpYRYvrkGW-QeDwtwNQ3-Q1ZSa1P6NH"},{"month":"Junho","city":"Luziânia","state":"GO","period":"11 a 13 de junho","tag":"","url":"https://drive.google.com/drive/folders/1F5AKjOcyQ4ZEclDs8fxabKnrcTvEpznp"},{"month":"Junho","city":"Araguatins","state":"TO","period":"05 a 09 de junho","tag":"","url":"https://drive.google.com/drive/folders/1mSSEErn1fUkne9w93z0bwMvlB23HkZp7"},{"month":"Maio","city":"Luziânia","state":"GO","period":"28 a 30 de maio","tag":"","url":"https://drive.google.com/drive/folders/1lT0zXOjILiyoxCuowQKJuJEN8miZ0WBW"},{"month":"Maio","city":"Palmeirópolis","state":"TO","period":"25 e 26 de maio","tag":"Pasta 1","url":"https://drive.google.com/drive/folders/1vjdXxlbZI2gdsd51CoZh2y4pJ92DTnCF"},{"month":"Maio","city":"Palmeirópolis","state":"TO","period":"25 e 26 de maio","tag":"Pasta 2","url":"https://drive.google.com/drive/folders/10KeZMxtLEHYvDWEPu4tnSSXIxIY_ExtS"},{"month":"Maio","city":"Formoso do Araguaia","state":"TO","period":"14 e 15 de maio","tag":"","url":"https://drive.google.com/drive/folders/18GaTac9RM5f6uG81KhqZDtcGQxG4CGYh"},{"month":"Maio","city":"Araguacema","state":"TO","period":"11 e 12 de maio","tag":"","url":"https://drive.google.com/drive/folders/1JbwFG2MZhtAh05UHj038tcpO50ngHzHs"},{"month":"Maio","city":"Luziânia","state":"GO","period":"07 a 09 de maio","tag":"","url":"https://drive.google.com/drive/folders/17dpLKmRTHd33Yw4LUU1gJSxSTamGoAeQ"},{"month":"Maio","city":"Goiatins","state":"TO","period":"05 a 09 de maio","tag":"","url":"https://drive.google.com/drive/folders/1CxhWflp6I6eYMcWRoHLrnM1mj9YplGs7"},{"month":"Abril","city":"Luziânia","state":"GO","period":"23 a 25 de abril","tag":"","url":"https://drive.google.com/drive/folders/1sejEtq76bSg4bAelqSH5ManihtsBKZu4"},{"month":"Abril","city":"Luziânia","state":"GO","period":"08 a 10 de abril","tag":"","url":"https://drive.google.com/drive/folders/1SmE7DxiX1hqHd72VubwzribxLGJ-mMXF"},{"month":"Março","city":"Monte Alegre","state":"GO","period":"24 e 25 de março","tag":"","url":"https://drive.google.com/drive/folders/1QWKtlQgGnOF0h5i8VtuCl9Il19Z3bl2S"}];
+    const months = ["Outubro","Setembro","Agosto","Julho","Junho","Maio","Abril","Março"];
+    const search = document.getElementById("search");
+    const state = document.getElementById("state");
+    const monthsEl = document.getElementById("months");
+    const listEl = document.getElementById("list");
+    const resultsEl = document.getElementById("results");
+    const clearEl = document.getElementById("clear");
+    const emptyEl = document.getElementById("empty");
+    let currentMonth = "all";
+    const normalize = value => String(value).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+    const text = (tag, className, value) => {
+      const el = document.createElement(tag);
+      if (className) el.className = className;
+      el.textContent = value;
+      return el;
+    };
+    const svgArrow = () => {
+      const ns = "http://www.w3.org/2000/svg";
+      const el = document.createElementNS(ns,"svg");
+      el.setAttribute("viewBox","0 0 24 24");
+      el.setAttribute("width","19");
+      el.setAttribute("height","19");
+      el.setAttribute("fill","none");
+      el.setAttribute("stroke","currentColor");
+      el.setAttribute("stroke-width","2");
+      el.setAttribute("stroke-linecap","round");
+      el.setAttribute("stroke-linejoin","round");
+      const path = document.createElementNS(ns,"path");
+      path.setAttribute("d","M7 17 17 7M8 7h9v9");
+      el.append(path);
+      el.setAttribute("aria-hidden","true");
+      return el;
+    };
+    function makeCard(action) {
+      const card = text("article","card","");
+      const meta = text("div","meta","");
+      meta.append(text("span","chip",action.state));
+      if (action.tag) meta.append(text("span","chip duplicate",action.tag));
+      card.append(meta);
+      card.append(text("h3","",action.city));
+      card.append(text("p","date",action.period + " de 2026"));
+      const link = text("a","visit","Abrir pasta no Drive");
+      link.href = action.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.setAttribute("aria-label","Abrir pasta de " + action.city + ", " + action.period + (action.tag ? ", " + action.tag : "") + ", no Google Drive");
+      link.append(svgArrow());
+      card.append(link);
+      return card;
+    }
+    function render() {
+      monthsEl.replaceChildren();
+      for (const month of ["all",...months]) {
+        const total = month === "all" ? actions.length : actions.filter(a=>a.month===month).length;
+        const button = text("button","filter",month === "all" ? "Todos" : month);
+        button.type = "button";
+        button.setAttribute("aria-pressed",String(currentMonth===month));
+        button.append(text("span","count",String(total)));
+        button.addEventListener("click",()=>{currentMonth=month;render();});
+        monthsEl.append(button);
+      }
+      const query = normalize(search.value);
+      const matches = actions.filter(action => (currentMonth === "all" || action.month === currentMonth)
+        && (state.value === "all" || action.state === state.value)
+        && normalize([action.city,action.state,action.period,action.month,action.tag].join(" ")).includes(query));
+      const fragment = document.createDocumentFragment();
+      for (const month of months) {
+        const group = matches.filter(a => a.month === month);
+        if (!group.length) continue;
+        const section = text("section","month-block","");
+        section.id = "mes-" + normalize(month);
+        const header = text("div","month-heading","");
+        header.append(text("h2","",month + " 2026"),text("span","number",String(group.length)),text("span","rule",""));
+        section.append(header);
+        const cards = text("div","cards","");
+        group.forEach(action=>cards.append(makeCard(action)));
+        section.append(cards);
+        fragment.append(section);
+      }
+      listEl.replaceChildren(fragment);
+      resultsEl.textContent = matches.length === 1 ? "1 pasta encontrada" : matches.length + " pastas encontradas";
+      clearEl.hidden = !query && currentMonth === "all" && state.value === "all";
+      emptyEl.hidden = matches.length > 0;
+    }
+    search.addEventListener("input",render);
+    state.addEventListener("change",render);
+    clearEl.addEventListener("click",()=>{search.value="";state.value="all";currentMonth="all";render();search.focus();});
+    document.getElementById("total-pastas").textContent = String(actions.length);
+    render();
+  </script>
+</body>
+</html>
